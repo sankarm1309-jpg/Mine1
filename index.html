@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mon Ange 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+background:linear-gradient(135deg,#ffd6ec,#ffeaf6);
+font-family:'Dancing Script',cursive;
+overflow:hidden;
+}
+
+/* Common box */
+.box{
+width:85%;
+max-width:600px;
+margin:100px auto;
+padding:30px;
+background:white;
+border-radius:40px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+button{
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:30px;
+background:#ff4da6;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.pageSection{display:none;}
+
+/* Lock */
+.lockWrap{
+width:220px;
+margin:80px auto;
+text-align:center;
+}
+
+.heartDoor{
+width:200px;
+height:180px;
+margin:auto;
+background:white;
+border-radius:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+transition:1s;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.heartDoor.open{
+transform:rotateY(-120deg);
+}
+
+.lockContent{
+display:none;
+margin-top:30px;
+}
+
+/* BOOK */
+.book-wrapper{
+display:none;
+width:350px;
+height:500px;
+margin:40px auto;
+perspective:2000px;
+}
+
+.book{
+width:100%;
+height:100%;
+position:relative;
+transform-style:preserve-3d;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+transform-origin:left;
+transition:1s ease;
+backface-visibility:hidden;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+box-sizing:border-box;
+text-align:center;
+font-family:'Great Vibes',cursive;
+font-size:22px;
+}
+
+.page img{
+width:80%;
+border-radius:15px;
+margin:10px 0;
+}
+
+.page.flipped{
+transform:rotateY(-180deg);
+}
+
+.cover{
+background:linear-gradient(135deg,#ff99cc,#ff66a3);
+color:white;
+font-size:28px;
+}
+
+.openBtn{
+position:absolute;
+bottom:15px;
+right:20px;
+background:white;
+color:#ff4da6;
+border:none;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+font-family:sans-serif;
+}
+
+.nextBtn{
+margin-top:10px;
+background:#ff4da6;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+font-family:sans-serif;
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="box">
+<h2>Will you be my valentine Mon Ange?? 🙈</h2>
+<button onclick="yes()">Yes 😘</button>
+<button onclick="no()">No 🥲</button>
+</div>
+
+<div id="noPage" class="box pageSection">
+<h3>Noo va?? 🥺 Try again</h3>
+<button onclick="back()">Go Back</button>
+</div>
+
+<div id="page2" class="box pageSection">
+<h2>I knew it 😌💙</h2>
+<button onclick="openLetter()">Next</button>
+</div>
+
+<div id="page3" class="box pageSection">
+From : Mamsehhhh 🤍<br>
+To : Mon Ange 💙<br><br>
+Distance doesn't matter when hearts are connected 😘<br><br>
+<button onclick="openLock()">Next</button>
+</div>
+
+<!-- LOCK + MUSIC -->
+<div id="page4" class="pageSection">
+
+<div class="lockWrap">
+<div class="heartDoor" id="door">
+<input type="password" id="pass" placeholder="Enter 1605">
+</div>
+</div>
+
+<div id="lockContent" class="lockContent">
+<p>Original song dedicate panuren 😽</p>
+
+<button id="playBtn">▶ Play Song</button>
+<button id="skipBtn">Skip ⏭</button>
+
+<audio id="song" src="unviral.mp3"></audio>
+
+<p id="afterSong" style="display:none;">
+intha lyrics la vara maari unna na paathupen 🫂💙
+</p>
+
+<button id="nextAfterSong" style="display:none;">
+Go To Our Book 📖
+</button>
+</div>
+</div>
+
+<!-- BOOK -->
+<div class="book-wrapper" id="bookWrapper">
+<div class="book">
+
+<!-- COVER -->
+<div class="page cover" id="cover" style="z-index:20;">
+Our Beautiful Journey Mon Ange 👨‍❤️‍👨
+<button class="openBtn" onclick="flip(0)">Open to View</button>
+</div>
+
+<div class="page" id="p1" style="z-index:19;">
+<img src="Photo1.jpg">
+<img src="Photo2.jpg">
+<button class="nextBtn" onclick="flip(1)">Next</button>
+</div>
+
+<div class="page" id="p2" style="z-index:18;">
+<img src="Photo3.jpg">
+<p>You entered my life as a blessing 💫</p>
+<button class="nextBtn" onclick="flip(2)">Next</button>
+</div>
+
+<div class="page" id="p3" style="z-index:17;">
+<img src="Photo4.jpg">
+<p>You complete me 🤍</p>
+<button class="nextBtn" onclick="flip(3)">Next</button>
+</div>
+
+<div class="page" id="p4" style="z-index:16;">
+<img src="Photo5.jpg">
+<p>You are my happy-pill 💊</p>
+<button class="nextBtn" onclick="flip(4)">Next</button>
+</div>
+
+<div class="page" id="p5" style="z-index:15;">
+<img src="Photo6.jpg">
+<p>I will always there to irritate you 😼</p>
+<button class="nextBtn" onclick="flip(5)">Next</button>
+</div>
+
+<div class="page" id="p6" style="z-index:14;">
+<img src="Photo7.jpg">
+<p>You are my favourite notification 💌</p>
+<button class="nextBtn" onclick="flip(6)">Next</button>
+</div>
+
+<div class="page" id="p7" style="z-index:13;">
+<img src="Photo8.jpg">
+<p>You are the best part of my life and Im so lucky to have you 🥺</p>
+<button class="nextBtn" onclick="flip(7)">Next</button>
+</div>
+
+<div class="page" id="p8" style="z-index:12;">
+<img src="Photo9.jpg">
+<p>My love for you increasing day by day 🧿</p>
+<button class="nextBtn" onclick="flip(8)">Next</button>
+</div>
+
+<div class="page" id="p9" style="z-index:11;">
+<p style="font-size:28px;">
+I miss you sooooooooooooooooooooooo much Muu 🥺💙
+</p>
+</div>
+
+</div>
+</div>
+
+<script>
+function yes(){page1.style.display="none";page2.style.display="block";}
+function no(){page1.style.display="none";noPage.style.display="block";}
+function back(){noPage.style.display="none";page1.style.display="block";}
+function openLetter(){page2.style.display="none";page3.style.display="block";}
+function openLock(){page3.style.display="none";page4.style.display="block";}
+
+document.getElementById("pass").addEventListener("input",function(){
+if(this.value==="1605"){
+door.classList.add("open");
+setTimeout(()=>{lockContent.style.display="block";},800);
+}
+});
+
+const audio=document.getElementById("song");
+const playBtn=document.getElementById("playBtn");
+const skipBtn=document.getElementById("skipBtn");
+const afterSong=document.getElementById("afterSong");
+const nextBtn=document.getElementById("nextAfterSong");
+
+playBtn.onclick=function(){
+audio.play();
+};
+
+audio.onended=function(){
+afterSong.style.display="block";
+nextBtn.style.display="inline-block";
+};
+
+skipBtn.onclick=function(){
+audio.pause();
+afterSong.style.display="block";
+nextBtn.style.display="inline-block";
+};
+
+nextBtn.onclick=function(){
+page4.style.display="none";
+bookWrapper.style.display="block";
+};
+
+function flip(n){
+let page;
+if(n===0) page=document.getElementById("cover");
+else page=document.getElementById("p"+n);
+page.classList.add("flipped");
+
+if(n===8){
+setTimeout(()=>{
+document.getElementById("p9").classList.add("flipped");
+},1000);
+
+setTimeout(()=>{
+document.getElementById("cover").classList.remove("flipped");
+},3000);
+}
+}
+</script>
+
+</body>
+</html>
